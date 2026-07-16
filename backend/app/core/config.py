@@ -21,10 +21,15 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "ResumeForge API"
     
-    # CORS Origins configuration
     BACKEND_CORS_ORIGINS: Annotated[
         List[str], BeforeValidator(parse_cors_origins)
-    ] = ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173"]
+    ] = [
+        "http://localhost:5173", 
+        "http://localhost:5174", 
+        "http://localhost:3000", 
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174"
+    ]
 
     # Database
     DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/resumeforge"
