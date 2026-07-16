@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
-import { Sparkles, Loader2, AlertCircle, Check, HelpCircle, Layers, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, Loader2, AlertCircle, Check, HelpCircle, Layers, ArrowRight, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 import { DashboardLayout } from "./components/DashboardLayout.tsx";
 import { AuthProvider, useAuth } from "./context/AuthContext.tsx";
 import { ToastProvider } from "./context/ToastContext.tsx";
@@ -353,38 +353,114 @@ const BrandMark = () => (
 // Landing Page Header navigation
 const Navigation = () => {
   const { isAuthenticated } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-[#C9D3C6] bg-[#EFF3EC]/85 backdrop-blur-md">
-      <Link to="/" className="flex items-center space-x-3">
-        <BrandMark />
-        <span className="font-mono-plex text-sm font-bold tracking-widest text-[#1E3A34] uppercase">
-          Papertrail
-        </span>
-      </Link>
-      <div className="hidden md:flex items-center space-x-8 text-xs font-bold font-mono-plex tracking-wider uppercase">
-        <a href="#features" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">Features</a>
-        <a href="#templates" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">Templates</a>
-        <a href="#ats-check" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">ATS Check</a>
-        <a href="#how-it-works" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">How it works</a>
-      </div>
-      <div className="flex items-center space-x-5">
-        {isAuthenticated ? (
-          <Link to="/dashboard" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl font-bold">
-            Dashboard
-          </Link>
-        ) : (
-          <>
-            <Link to="/login" className="font-mono-plex text-xs uppercase tracking-wider font-bold text-[#3E5750] hover:text-[#1E3A34] transition-colors">
-              Sign In
-            </Link>
-            <Link to="/login" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl font-bold">
-              Start your resume
-            </Link>
-          </>
-        )}
-      </div>
-    </nav>
+    <>
+      <nav className="sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-[#C9D3C6] bg-[#EFF3EC]/85 backdrop-blur-md">
+        <Link to="/" className="flex items-center space-x-3">
+          <BrandMark />
+          <span className="font-mono-plex text-sm font-bold tracking-widest text-[#1E3A34] uppercase">
+            Papertrail
+          </span>
+        </Link>
+        <div className="hidden md:flex items-center space-x-8 text-xs font-bold font-mono-plex tracking-wider uppercase">
+          <a href="#features" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">Features</a>
+          <a href="#templates" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">Templates</a>
+          <a href="#ats-check" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">ATS Check</a>
+          <a href="#how-it-works" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">How it works</a>
+        </div>
+        <div className="flex items-center space-x-5">
+          <div className="hidden sm:flex items-center space-x-5">
+            {isAuthenticated ? (
+              <Link to="/dashboard" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl font-bold">
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link to="/login" className="font-mono-plex text-xs uppercase tracking-wider font-bold text-[#3E5750] hover:text-[#1E3A34] transition-colors">
+                  Sign In
+                </Link>
+                <Link to="/login" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl font-bold">
+                  Start your resume
+                </Link>
+              </>
+            )}
+          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-[#3E5750] hover:bg-[#E4EAE0] rounded-xl transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 md:hidden flex flex-col bg-[#EFF3EC] pt-20 px-6 space-y-6 animate-fade-in">
+          <div className="flex flex-col space-y-4 text-sm font-bold font-mono-plex tracking-wider uppercase">
+            <a 
+              href="#features" 
+              onClick={() => setIsOpen(false)} 
+              className="text-[#3E5750] hover:text-[#1E3A34] border-b border-[#C9D3C6] py-3"
+            >
+              Features
+            </a>
+            <a 
+              href="#templates" 
+              onClick={() => setIsOpen(false)} 
+              className="text-[#3E5750] hover:text-[#1E3A34] border-b border-[#C9D3C6] py-3"
+            >
+              Templates
+            </a>
+            <a 
+              href="#ats-check" 
+              onClick={() => setIsOpen(false)} 
+              className="text-[#3E5750] hover:text-[#1E3A34] border-b border-[#C9D3C6] py-3"
+            >
+              ATS Check
+            </a>
+            <a 
+              href="#how-it-works" 
+              onClick={() => setIsOpen(false)} 
+              className="text-[#3E5750] hover:text-[#1E3A34] border-b border-[#C9D3C6] py-3"
+            >
+              How it works
+            </a>
+          </div>
+          <div className="flex flex-col space-y-3 pt-6">
+            {isAuthenticated ? (
+              <Link 
+                to="/dashboard" 
+                onClick={() => setIsOpen(false)} 
+                className="btn-berry text-center font-mono-plex text-xs uppercase tracking-wider py-3.5 rounded-xl font-bold"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link 
+                  to="/login" 
+                  onClick={() => setIsOpen(false)} 
+                  className="font-mono-plex text-center text-xs uppercase tracking-wider font-bold text-[#3E5750] py-3 border border-[#C9D3C6] rounded-xl hover:bg-[#E4EAE0] transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link 
+                  to="/login" 
+                  onClick={() => setIsOpen(false)} 
+                  className="btn-berry text-center font-mono-plex text-xs uppercase tracking-wider py-3.5 rounded-xl font-bold"
+                >
+                  Start your resume
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

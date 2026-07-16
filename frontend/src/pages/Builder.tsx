@@ -520,7 +520,7 @@ export const Builder = () => {
             </span>
             <span className="font-mono text-[9px] text-[#5B6B60] italic">Updates as you type</span>
           </div>
-          <div className="flex-1 min-h-0">
+          <div className="flex-1 min-h-0 overflow-y-auto">
             <ResumePreview data={formValues} />
           </div>
         </div>
