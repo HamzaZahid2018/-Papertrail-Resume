@@ -1,0 +1,62 @@
+# Version control ignore rules for ResumeForge
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_drivers/
+.venv/
+venv/
+env/
+ENV/
+bin/
+lib/
+include/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.vite/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db

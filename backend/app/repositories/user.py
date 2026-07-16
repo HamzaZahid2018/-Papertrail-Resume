@@ -1,0 +1,14 @@
+from typing import Optional
+from sqlalchemy.orm import Session
+from app.models.user import User
+from app.schemas.user import UserCreate, UserUpdate
+from app.repositories.base import BaseRepository
+
+class UserRepository(BaseRepository[User, UserCreate, UserUpdate]):
+    """UserRepository containing user specific query lookups."""
+    
+    def get_by_email(self, db: Session, *, email: str) -> Optional[User]:
+        """Fetch a user by their unique email address."""
+        return db.query(self.model).filter(self.model.email == email).first()
+
+user_repository = UserRepository(User)
