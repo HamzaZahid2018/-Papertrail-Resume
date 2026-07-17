@@ -286,7 +286,7 @@ export const Dashboard = () => {
         </div>
 
         {/* Status Tabs */}
-        <div className="flex items-center space-x-1.5 border-t border-[#C9D3C6] pt-4">
+        <div className="flex items-center space-x-1.5 border-t border-[#C9D3C6] pt-4 overflow-x-auto scrollbar-hide">
           {(["all", "active", "draft", "complete"] as const).map((tab) => (
             <button
               key={tab}

@@ -46,7 +46,7 @@ class ResumeService:
         resume = resume_repository.get(db, id=resume_id)
         if not resume:
             raise NotFoundException(message="Resume not found.")
-        if resume.user_id != user_id:
+        if str(resume.user_id) != str(user_id):
             raise ForbiddenException(message="You do not have permission to access this resume.")
         return resume
 
@@ -101,7 +101,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: EducationCreate, user_id: uuid.UUID
     ) -> Education:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_edu = Education(**obj_in.model_dump(), resume_id=resume_id)
+        db_edu = Education(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_edu)
         db.commit()
         db.refresh(db_edu)
@@ -111,7 +111,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, education_id: uuid.UUID, obj_in: EducationUpdate, user_id: uuid.UUID
     ) -> Education:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_edu = db.query(Education).filter(Education.id == education_id, Education.resume_id == resume_id).first()
+        db_edu = db.query(Education).filter(Education.id == str(education_id), Education.resume_id == str(resume_id)).first()
         if not db_edu:
             raise NotFoundException(message="Education entry not found on this resume.")
         
@@ -128,7 +128,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, education_id: uuid.UUID, user_id: uuid.UUID
     ) -> Education:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_edu = db.query(Education).filter(Education.id == education_id, Education.resume_id == resume_id).first()
+        db_edu = db.query(Education).filter(Education.id == str(education_id), Education.resume_id == str(resume_id)).first()
         if not db_edu:
             raise NotFoundException(message="Education entry not found on this resume.")
         db.delete(db_edu)
@@ -140,7 +140,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: ExperienceCreate, user_id: uuid.UUID
     ) -> Experience:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = Experience(**obj_in.model_dump(), resume_id=resume_id)
+        db_obj = Experience(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -150,7 +150,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, experience_id: uuid.UUID, obj_in: ExperienceUpdate, user_id: uuid.UUID
     ) -> Experience:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Experience).filter(Experience.id == experience_id, Experience.resume_id == resume_id).first()
+        db_obj = db.query(Experience).filter(Experience.id == str(experience_id), Experience.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Experience entry not found on this resume.")
         
@@ -167,7 +167,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, experience_id: uuid.UUID, user_id: uuid.UUID
     ) -> Experience:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Experience).filter(Experience.id == experience_id, Experience.resume_id == resume_id).first()
+        db_obj = db.query(Experience).filter(Experience.id == str(experience_id), Experience.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Experience entry not found on this resume.")
         db.delete(db_obj)
@@ -179,7 +179,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: ProjectCreate, user_id: uuid.UUID
     ) -> Project:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = Project(**obj_in.model_dump(), resume_id=resume_id)
+        db_obj = Project(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -189,7 +189,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, project_id: uuid.UUID, obj_in: ProjectUpdate, user_id: uuid.UUID
     ) -> Project:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Project).filter(Project.id == project_id, Project.resume_id == resume_id).first()
+        db_obj = db.query(Project).filter(Project.id == str(project_id), Project.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Project entry not found on this resume.")
         
@@ -206,7 +206,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, project_id: uuid.UUID, user_id: uuid.UUID
     ) -> Project:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Project).filter(Project.id == project_id, Project.resume_id == resume_id).first()
+        db_obj = db.query(Project).filter(Project.id == str(project_id), Project.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Project entry not found on this resume.")
         db.delete(db_obj)
@@ -218,7 +218,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: SkillCreate, user_id: uuid.UUID
     ) -> Skill:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = Skill(**obj_in.model_dump(), resume_id=resume_id)
+        db_obj = Skill(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -228,7 +228,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, skill_id: uuid.UUID, obj_in: SkillUpdate, user_id: uuid.UUID
     ) -> Skill:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Skill).filter(Skill.id == skill_id, Skill.resume_id == resume_id).first()
+        db_obj = db.query(Skill).filter(Skill.id == str(skill_id), Skill.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Skill entry not found on this resume.")
         
@@ -245,7 +245,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, skill_id: uuid.UUID, user_id: uuid.UUID
     ) -> Skill:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Skill).filter(Skill.id == skill_id, Skill.resume_id == resume_id).first()
+        db_obj = db.query(Skill).filter(Skill.id == str(skill_id), Skill.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Skill entry not found on this resume.")
         db.delete(db_obj)
@@ -257,7 +257,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: CertificateCreate, user_id: uuid.UUID
     ) -> Certificate:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = Certificate(**obj_in.model_dump(), resume_id=resume_id)
+        db_obj = Certificate(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -267,7 +267,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, certificate_id: uuid.UUID, obj_in: CertificateUpdate, user_id: uuid.UUID
     ) -> Certificate:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Certificate).filter(Certificate.id == certificate_id, Certificate.resume_id == resume_id).first()
+        db_obj = db.query(Certificate).filter(Certificate.id == str(certificate_id), Certificate.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Certificate entry not found on this resume.")
         
@@ -284,7 +284,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, certificate_id: uuid.UUID, user_id: uuid.UUID
     ) -> Certificate:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Certificate).filter(Certificate.id == certificate_id, Certificate.resume_id == resume_id).first()
+        db_obj = db.query(Certificate).filter(Certificate.id == str(certificate_id), Certificate.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Certificate entry not found on this resume.")
         db.delete(db_obj)
@@ -296,7 +296,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: LanguageCreate, user_id: uuid.UUID
     ) -> Language:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = Language(**obj_in.model_dump(), resume_id=resume_id)
+        db_obj = Language(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -306,7 +306,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, language_id: uuid.UUID, obj_in: LanguageUpdate, user_id: uuid.UUID
     ) -> Language:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Language).filter(Language.id == language_id, Language.resume_id == resume_id).first()
+        db_obj = db.query(Language).filter(Language.id == str(language_id), Language.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Language entry not found on this resume.")
         
@@ -323,7 +323,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, language_id: uuid.UUID, user_id: uuid.UUID
     ) -> Language:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(Language).filter(Language.id == language_id, Language.resume_id == resume_id).first()
+        db_obj = db.query(Language).filter(Language.id == str(language_id), Language.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="Language entry not found on this resume.")
         db.delete(db_obj)
@@ -335,7 +335,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, obj_in: SocialLinkCreate, user_id: uuid.UUID
     ) -> SocialLink:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = SocialLink(**obj_in.model_dump(), resume_id=resume_id)
+        db_obj = SocialLink(**obj_in.model_dump(), resume_id=str(resume_id))
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)
@@ -345,7 +345,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, social_link_id: uuid.UUID, obj_in: SocialLinkUpdate, user_id: uuid.UUID
     ) -> SocialLink:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(SocialLink).filter(SocialLink.id == social_link_id, SocialLink.resume_id == resume_id).first()
+        db_obj = db.query(SocialLink).filter(SocialLink.id == str(social_link_id), SocialLink.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="SocialLink entry not found on this resume.")
         
@@ -362,7 +362,7 @@ class ResumeService:
         self, db: Session, *, resume_id: uuid.UUID, social_link_id: uuid.UUID, user_id: uuid.UUID
     ) -> SocialLink:
         self._verify_and_get_parent_resume(db, resume_id=resume_id, user_id=user_id)
-        db_obj = db.query(SocialLink).filter(SocialLink.id == social_link_id, SocialLink.resume_id == resume_id).first()
+        db_obj = db.query(SocialLink).filter(SocialLink.id == str(social_link_id), SocialLink.resume_id == str(resume_id)).first()
         if not db_obj:
             raise NotFoundException(message="SocialLink entry not found on this resume.")
         db.delete(db_obj)

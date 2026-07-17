@@ -3,19 +3,18 @@ from datetime import date, datetime
 from typing import Optional
 from sqlalchemy import String, Text, Boolean, Date, DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy.dialects.postgresql import UUID
 from app.core.database import Base
 
 class Education(Base):
     __tablename__ = "education"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )
@@ -66,13 +65,13 @@ class Education(Base):
 class Experience(Base):
     __tablename__ = "experience"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )
@@ -128,13 +127,13 @@ class Experience(Base):
 class Project(Base):
     __tablename__ = "projects"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )
@@ -185,13 +184,13 @@ class Project(Base):
 class Skill(Base):
     __tablename__ = "skills"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )
@@ -230,13 +229,13 @@ class Skill(Base):
 class Certificate(Base):
     __tablename__ = "certificates"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )
@@ -283,13 +282,13 @@ class Certificate(Base):
 class Language(Base):
     __tablename__ = "languages"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )
@@ -324,13 +323,13 @@ class Language(Base):
 class SocialLink(Base):
     __tablename__ = "social_links"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    id: Mapped[str] = mapped_column(
+        String(36), 
         primary_key=True, 
-        default=uuid.uuid4
+        default=lambda: str(uuid.uuid4())
     )
-    resume_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), 
+    resume_id: Mapped[str] = mapped_column(
+        String(36), 
         ForeignKey("resumes.id", ondelete="CASCADE"), 
         nullable=False
     )

@@ -28,7 +28,7 @@ class ResumeRepository(BaseRepository[Resume, ResumeCreate, ResumeUpdate]):
         title_query: Optional[str] = None
     ) -> List[Resume]:
         """Fetch multiple resumes belonging to a user with pagination and title search filters."""
-        query = db.query(self.model).filter(self.model.user_id == user_id)
+        query = db.query(self.model).filter(self.model.user_id == str(user_id))
         if title_query:
             query = query.filter(self.model.title.ilike(f"%{title_query}%"))
         return query.order_by(self.model.updated_at.desc()).offset(skip).limit(limit).all()
@@ -41,7 +41,7 @@ class ResumeRepository(BaseRepository[Resume, ResumeCreate, ResumeUpdate]):
         title_query: Optional[str] = None
     ) -> int:
         """Count total resumes belonging to a user matching search filters."""
-        query = db.query(func.count(self.model.id)).filter(self.model.user_id == user_id)
+        query = db.query(func.count(self.model.id)).filter(self.model.user_id == str(user_id))
         if title_query:
             query = query.filter(self.model.title.ilike(f"%{title_query}%"))
         return query.scalar() or 0
@@ -65,7 +65,7 @@ class ResumeRepository(BaseRepository[Resume, ResumeCreate, ResumeUpdate]):
         social_links_data = data.pop("social_links", []) or []
 
         # Create master record
-        db_obj = Resume(**data, user_id=user_id)
+        db_obj = Resume(**data, user_id=str(user_id))
         db.add(db_obj)
         db.flush() # Flush to populate db_obj.id
 
@@ -123,7 +123,7 @@ class ResumeRepository(BaseRepository[Resume, ResumeCreate, ResumeUpdate]):
         return obj_in
 
     def remove_education(self, db: Session, *, education_id: uuid.UUID) -> Optional[Education]:
-        obj = db.query(Education).filter(Education.id == education_id).first()
+        obj = db.query(Education).filter(Education.id == str(education_id)).first()
         if obj:
             db.delete(obj)
             db.commit()

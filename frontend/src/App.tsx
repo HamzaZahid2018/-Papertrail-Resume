@@ -357,10 +357,10 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-[#C9D3C6] bg-[#EFF3EC]/85 backdrop-blur-md">
-        <Link to="/" className="flex items-center space-x-3">
+      <nav className="sticky top-0 z-50 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between border-b border-[#C9D3C6] bg-[#EFF3EC]/85 backdrop-blur-md">
+        <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
           <BrandMark />
-          <span className="font-mono-plex text-sm font-bold tracking-widest text-[#1E3A34] uppercase">
+          <span className="font-mono-plex text-xs sm:text-sm font-bold tracking-widest text-[#1E3A34] uppercase">
             Papertrail
           </span>
         </Link>
@@ -371,7 +371,7 @@ const Navigation = () => {
           <a href="#how-it-works" className="text-[#3E5750] hover:text-[#1E3A34] nav-link-underline transition-colors py-1">How it works</a>
         </div>
         <div className="flex items-center space-x-5">
-          <div className="hidden sm:flex items-center space-x-5">
+          <div className="hidden md:flex items-center space-x-5">
             {isAuthenticated ? (
               <Link to="/dashboard" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl font-bold">
                 Dashboard
@@ -466,9 +466,9 @@ const Navigation = () => {
 
 const Footer = () => {
   return (
-    <footer className="border-t border-[#C9D3C6] py-12 px-6 bg-[#E4EAE0] text-[#1E3A34] mt-auto">
-      <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-        <div className="lg:col-span-2 space-y-4">
+    <footer className="border-t border-[#C9D3C6] py-8 sm:py-12 px-4 sm:px-6 bg-[#E4EAE0] text-[#1E3A34] mt-auto">
+      <div className="max-w-[1180px] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-12">
+        <div className="col-span-2 sm:col-span-2 lg:col-span-2 space-y-4">
           <Link to="/" className="flex items-center space-x-3">
             <BrandMark />
             <span className="font-mono-plex text-sm font-bold tracking-widest uppercase">Papertrail</span>
@@ -479,7 +479,7 @@ const Footer = () => {
         </div>
         
         <div>
-          <h4 className="font-mono-plex text-xs font-bold uppercase text-[#B23A52] tracking-wider mb-4">Product</h4>
+          <h4 className="font-mono-plex text-xs font-bold uppercase text-[#B23A52] tracking-wider mb-3 sm:mb-4">Product</h4>
           <ul className="space-y-2 text-xs font-semibold text-[#3E5750]">
             <li><a href="#" className="hover:text-[#1E3A34]">Resume Builder</a></li>
             <li><a href="#" className="hover:text-[#1E3A34]">ATS Scoring</a></li>
@@ -488,15 +488,15 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-mono-plex text-xs font-bold uppercase text-[#B23A52] tracking-wider mb-4">Account</h4>
+          <h4 className="font-mono-plex text-xs font-bold uppercase text-[#B23A52] tracking-wider mb-3 sm:mb-4">Account</h4>
           <ul className="space-y-2 text-xs font-semibold text-[#3E5750]">
             <li><Link to="/login" className="hover:text-[#1E3A34]">Sign In</Link></li>
             <li><Link to="/login" className="hover:text-[#1E3A34]">Create Account</Link></li>
           </ul>
         </div>
 
-        <div>
-          <h4 className="font-mono-plex text-xs font-bold uppercase text-[#B23A52] tracking-wider mb-4">Info</h4>
+        <div className="col-span-2 sm:col-span-1">
+          <h4 className="font-mono-plex text-xs font-bold uppercase text-[#B23A52] tracking-wider mb-3 sm:mb-4">Info</h4>
           <ul className="space-y-2 text-xs font-semibold text-[#3E5750]">
             <li><a href="#" className="hover:text-[#1E3A34]">Privacy Policy</a></li>
             <li><a href="#" className="hover:text-[#1E3A34]">Terms of Service</a></li>
@@ -505,11 +505,11 @@ const Footer = () => {
         </div>
       </div>
       
-      <div className="max-w-[1180px] mx-auto border-t border-[#C9D3C6]/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span className="font-mono-plex text-[10px] text-[#5B6B60] uppercase tracking-wider">
+      <div className="max-w-[1180px] mx-auto border-t border-[#C9D3C6]/60 pt-4 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <span className="font-mono-plex text-[9px] sm:text-[10px] text-[#5B6B60] uppercase tracking-wider">
           &copy; 2026 PAPERTRAIL. All rights reserved.
         </span>
-        <span className="font-mono-plex text-[10px] text-[#5B6B60] uppercase tracking-wider">
+        <span className="font-mono-plex text-[9px] sm:text-[10px] text-[#5B6B60] uppercase tracking-wider">
           BUILT WITH REACT · FASTAPI · SUPABASE
         </span>
       </div>
@@ -580,9 +580,9 @@ const Home = () => {
     <div className="flex flex-col min-h-screen">
       
       {/* 1. HERO SECTION */}
-      <section className="max-w-[1180px] mx-auto px-6 py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="max-w-[1180px] mx-auto px-4 sm:px-6 py-12 sm:py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Column info */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-5 sm:space-y-6">
           <div className="flex items-center space-x-2">
             <span className="w-6 h-0.5 bg-[#D9A441]" />
             <span className="font-mono-plex text-[10px] font-bold text-[#D9A441] uppercase tracking-widest">
@@ -590,7 +590,7 @@ const Home = () => {
             </span>
           </div>
           
-          <h1 className="font-fraunces text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1E3A34] tracking-tight leading-[1.08] max-w-xl">
+          <h1 className="font-fraunces text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1E3A34] tracking-tight leading-[1.08] max-w-xl">
             A resume built for <span className="text-[#B23A52] italic font-normal">the human reader</span>, readable by machines.
           </h1>
           
@@ -598,11 +598,11 @@ const Home = () => {
             Stop pasting content into generic dark mode SaaS containers. Papertrail outputs gorgeous editor-approved layouts styled to represent structured data profiles.
           </p>
           
-          <div className="flex flex-wrap items-center gap-4 pt-3">
-            <Link to="/login" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-8 py-4 rounded-xl font-bold">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 pt-3">
+            <Link to="/login" className="btn-berry font-mono-plex text-xs uppercase tracking-wider px-8 py-3.5 sm:py-4 rounded-xl font-bold text-center">
               Start building
             </Link>
-            <a href="#templates" className="btn-ghost-outline font-mono-plex text-xs uppercase tracking-wider px-8 py-4 rounded-xl font-bold">
+            <a href="#templates" className="btn-ghost-outline font-mono-plex text-xs uppercase tracking-wider px-8 py-3.5 sm:py-4 rounded-xl font-bold text-center">
               View designs
             </a>
           </div>
@@ -620,16 +620,16 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Right Column tilted mockup */}
-        <div className="lg:col-span-5 relative flex justify-center py-8">
+        {/* Right Column tilted mockup — hidden on very small screens */}
+        <div className="hidden sm:flex lg:col-span-5 relative justify-center py-4 sm:py-8">
           
           {/* Gold Wax Stamp overlay */}
-          <div className="absolute top-2 right-1 lg:-right-4 w-20 h-20 bg-[#D9A441] rounded-full flex flex-col items-center justify-center shadow-lg border-2 border-dashed border-[#EFF3EC]/60 z-30 transform rotate-12 transition-transform duration-300 hover:scale-105 select-none">
-            <span className="font-mono-plex text-[10px] font-bold text-[#1E3A34] tracking-widest">ATS</span>
-            <span className="font-mono-plex text-[10px] font-bold text-[#1E3A34] tracking-widest -mt-0.5">READY</span>
+          <div className="absolute top-0 sm:top-2 right-0 sm:right-1 lg:-right-4 w-16 h-16 sm:w-20 sm:h-20 bg-[#D9A441] rounded-full flex flex-col items-center justify-center shadow-lg border-2 border-dashed border-[#EFF3EC]/60 z-30 transform rotate-12 transition-transform duration-300 hover:scale-105 select-none">
+            <span className="font-mono-plex text-[8px] sm:text-[10px] font-bold text-[#1E3A34] tracking-widest">ATS</span>
+            <span className="font-mono-plex text-[8px] sm:text-[10px] font-bold text-[#1E3A34] tracking-widest -mt-0.5">READY</span>
           </div>
 
-          <div className="relative w-full max-w-xs aspect-[3/4]">
+          <div className="relative w-full max-w-[200px] sm:max-w-xs aspect-[3/4]">
             
             {/* Back Card Document */}
             <div 
@@ -638,50 +638,50 @@ const Home = () => {
             />
             
             {/* Front Card Document (Resume Mockup) */}
-            <div className="absolute inset-0 bg-[#FBFAF5] border border-[#C9D3C6] rounded-2xl shadow-md p-6 transform -rotate-3 origin-bottom-right transition-transform duration-500 hover:-rotate-[4deg] flex flex-col justify-between">
+            <div className="absolute inset-0 bg-[#FBFAF5] border border-[#C9D3C6] rounded-2xl shadow-md p-4 sm:p-6 transform -rotate-3 origin-bottom-right transition-transform duration-500 hover:-rotate-[4deg] flex flex-col justify-between">
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {/* Mock header */}
-                <div className="border-b border-[#C9D3C6] pb-3 text-center">
-                  <span className="font-fraunces text-base font-bold block leading-none">Alexander Mercer</span>
-                  <span className="font-mono-plex text-[8px] text-[#2C5F5B] uppercase tracking-widest font-bold mt-1.5 block">Software Architect</span>
-                  <div className="flex justify-center space-x-3 text-[7px] font-mono-plex text-[#5B6B60] mt-1.5 font-semibold">
+                <div className="border-b border-[#C9D3C6] pb-2 sm:pb-3 text-center">
+                  <span className="font-fraunces text-sm sm:text-base font-bold block leading-none">Alexander Mercer</span>
+                  <span className="font-mono-plex text-[7px] sm:text-[8px] text-[#2C5F5B] uppercase tracking-widest font-bold mt-1 sm:mt-1.5 block">Software Architect</span>
+                  <div className="flex justify-center space-x-3 text-[6px] sm:text-[7px] font-mono-plex text-[#5B6B60] mt-1 sm:mt-1.5 font-semibold">
                     <span>nyc.dev</span>
                     <span>alex@mercer.io</span>
                   </div>
                 </div>
 
                 {/* Mock section experience */}
-                <div className="space-y-2">
-                  <span className="font-mono-plex text-[7px] text-[#B23A52] font-bold uppercase tracking-widest block">Experience</span>
-                  <div className="space-y-1.5">
-                    <div className="flex justify-between items-center text-[7px] font-bold">
+                <div className="space-y-1.5 sm:space-y-2">
+                  <span className="font-mono-plex text-[6px] sm:text-[7px] text-[#B23A52] font-bold uppercase tracking-widest block">Experience</span>
+                  <div className="space-y-1 sm:space-y-1.5">
+                    <div className="flex justify-between items-center text-[6px] sm:text-[7px] font-bold">
                       <span>Staff Developer at Stripe</span>
-                      <span className="text-[#5B6B60] font-normal text-[6px]">2022 — Present</span>
+                      <span className="text-[#5B6B60] font-normal text-[5px] sm:text-[6px]">2022 — Present</span>
                     </div>
                     {/* Placeholder bars */}
-                    <div className="h-1.5 bg-[#C9D3C6]/40 rounded w-full" />
-                    <div className="h-1.5 bg-[#C9D3C6]/40 rounded w-11/12" />
+                    <div className="h-1 sm:h-1.5 bg-[#C9D3C6]/40 rounded w-full" />
+                    <div className="h-1 sm:h-1.5 bg-[#C9D3C6]/40 rounded w-11/12" />
                   </div>
                 </div>
 
                 {/* Mock section education */}
-                <div className="space-y-2">
-                  <span className="font-mono-plex text-[7px] text-[#B23A52] font-bold uppercase tracking-widest block">Education</span>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <span className="font-mono-plex text-[6px] sm:text-[7px] text-[#B23A52] font-bold uppercase tracking-widest block">Education</span>
                   <div className="space-y-1">
-                    <div className="flex justify-between items-center text-[7px] font-bold">
+                    <div className="flex justify-between items-center text-[6px] sm:text-[7px] font-bold">
                       <span>B.S. Computer Science</span>
-                      <span className="text-[#5B6B60] font-normal text-[6px]">Stanford</span>
+                      <span className="text-[#5B6B60] font-normal text-[5px] sm:text-[6px]">Stanford</span>
                     </div>
-                    <div className="h-1.5 bg-[#C9D3C6]/40 rounded w-3/4" />
+                    <div className="h-1 sm:h-1.5 bg-[#C9D3C6]/40 rounded w-3/4" />
                   </div>
                 </div>
               </div>
 
               {/* Skills chips */}
-              <div className="flex flex-wrap gap-1 mt-4">
+              <div className="flex flex-wrap gap-1 mt-3 sm:mt-4">
                 {["TypeScript", "Go", "Docker", "SQL"].map((tag) => (
-                  <span key={tag} className="bg-[#EFF3EC] border border-[#C9D3C6] px-1.5 py-0.5 rounded text-[6px] font-semibold text-[#1E3A34]">
+                  <span key={tag} className="bg-[#EFF3EC] border border-[#C9D3C6] px-1 sm:px-1.5 py-0.5 rounded text-[5px] sm:text-[6px] font-semibold text-[#1E3A34]">
                     {tag}
                   </span>
                 ))}
@@ -694,28 +694,28 @@ const Home = () => {
 
       {/* 2. LEDGER STRIP motiff */}
       <section className="w-full border-t border-b border-[#C9D3C6] bg-[#E4EAE0]/50 py-3 overflow-hidden select-none">
-        <div className="max-w-[1180px] mx-auto px-6 flex justify-between items-center text-[9px] font-bold font-mono-plex tracking-widest text-[#1E3A34]">
-          <span>Personal</span>
-          <span className="text-[#C9D3C6]">|</span>
-          <span>Experience</span>
-          <span className="text-[#C9D3C6]">|</span>
-          <span>Education</span>
-          <span className="text-[#C9D3C6]">|</span>
-          <span>Skills</span>
-          <span className="text-[#C9D3C6]">|</span>
-          <span>Projects</span>
-          <span className="text-[#C9D3C6]">|</span>
-          <span>Certifications</span>
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6 flex items-center gap-2 sm:gap-0 sm:justify-between text-[8px] sm:text-[9px] font-bold font-mono-plex tracking-widest text-[#1E3A34] overflow-x-auto scrollbar-hide whitespace-nowrap">
+          <span className="shrink-0">Personal</span>
+          <span className="text-[#C9D3C6] shrink-0">|</span>
+          <span className="shrink-0">Experience</span>
+          <span className="text-[#C9D3C6] shrink-0">|</span>
+          <span className="shrink-0">Education</span>
+          <span className="text-[#C9D3C6] shrink-0">|</span>
+          <span className="shrink-0">Skills</span>
+          <span className="text-[#C9D3C6] shrink-0">|</span>
+          <span className="shrink-0">Projects</span>
+          <span className="text-[#C9D3C6] shrink-0">|</span>
+          <span className="shrink-0">Certifications</span>
         </div>
       </section>
 
       {/* 3. FEATURES SECTION (Bordered seam effect) */}
-      <section id="features" className="max-w-[1180px] mx-auto px-6 py-20 lg:py-28 space-y-12">
+      <section id="features" className="max-w-[1180px] mx-auto px-4 sm:px-6 py-12 sm:py-20 lg:py-28 space-y-8 sm:space-y-12">
         <div className="space-y-3 max-w-xl">
           <span className="font-mono-plex text-[10px] font-bold text-[#B23A52] uppercase tracking-widest block">
             WHAT IT DOES
           </span>
-          <h2 className="font-fraunces text-3xl sm:text-4xl font-extrabold text-[#1E3A34] leading-tight">
+          <h2 className="font-fraunces text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1E3A34] leading-tight">
             Strict structure, beautiful output.
           </h2>
           <p className="text-[#3E5750] text-sm leading-relaxed">
@@ -724,39 +724,39 @@ const Home = () => {
         </div>
 
         {/* Feature Grid with border seams (0 gaps) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border border-[#C9D3C6] bg-white rounded-3xl overflow-hidden shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 border border-[#C9D3C6] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
           
           {/* Card 1 */}
-          <div className="p-8 border-b md:border-b-0 md:border-r border-[#C9D3C6] hover:bg-[#E4EAE0]/25 transition-colors group">
-            <div className="w-10 h-10 bg-[#EFF3EC] text-[#1E3A34] rounded-lg flex items-center justify-center shadow-sm border border-[#C9D3C6] mb-6">
+          <div className="p-6 sm:p-8 border-b md:border-b-0 md:border-r border-[#C9D3C6] hover:bg-[#E4EAE0]/25 transition-colors group">
+            <div className="w-10 h-10 bg-[#EFF3EC] text-[#1E3A34] rounded-lg flex items-center justify-center shadow-sm border border-[#C9D3C6] mb-4 sm:mb-6">
               <Layers className="w-5 h-5 text-[#2C5F5B]" />
             </div>
             <span className="font-mono-plex text-[9px] font-bold text-[#B23A52] tracking-widest uppercase block mb-2">FIELD 01 / UPDATE</span>
-            <h3 className="font-fraunces text-lg font-bold text-[#1E3A34] mb-3">Live as you type</h3>
+            <h3 className="font-fraunces text-base sm:text-lg font-bold text-[#1E3A34] mb-2 sm:mb-3">Live as you type</h3>
             <p className="text-xs text-[#5B6B60] leading-relaxed">
               Every stroke updates the print layout preview immediately on a split-screen canvas, keeping layout ratios precise.
             </p>
           </div>
 
           {/* Card 2 */}
-          <div className="p-8 border-b md:border-b-0 md:border-r border-[#C9D3C6] hover:bg-[#E4EAE0]/25 transition-colors group">
-            <div className="w-10 h-10 bg-[#EFF3EC] text-[#1E3A34] rounded-lg flex items-center justify-center shadow-sm border border-[#C9D3C6] mb-6">
+          <div className="p-6 sm:p-8 border-b md:border-b-0 md:border-r border-[#C9D3C6] hover:bg-[#E4EAE0]/25 transition-colors group">
+            <div className="w-10 h-10 bg-[#EFF3EC] text-[#1E3A34] rounded-lg flex items-center justify-center shadow-sm border border-[#C9D3C6] mb-4 sm:mb-6">
               <Sparkles className="w-5 h-5 text-[#D9A441]" />
             </div>
             <span className="font-mono-plex text-[9px] font-bold text-[#B23A52] tracking-widest uppercase block mb-2">FIELD 02 / COMPLIANCE</span>
-            <h3 className="font-fraunces text-lg font-bold text-[#1E3A34] mb-3">Scored against the bots</h3>
+            <h3 className="font-fraunces text-base sm:text-lg font-bold text-[#1E3A34] mb-2 sm:mb-3">Scored against the bots</h3>
             <p className="text-xs text-[#5B6B60] leading-relaxed">
               Live checks verify headings, dates, and keyword density parameters against Applicant Tracking System specs.
             </p>
           </div>
 
           {/* Card 3 */}
-          <div className="p-8 hover:bg-[#E4EAE0]/25 transition-colors group">
-            <div className="w-10 h-10 bg-[#EFF3EC] text-[#1E3A34] rounded-lg flex items-center justify-center shadow-sm border border-[#C9D3C6] mb-6">
+          <div className="p-6 sm:p-8 hover:bg-[#E4EAE0]/25 transition-colors group">
+            <div className="w-10 h-10 bg-[#EFF3EC] text-[#1E3A34] rounded-lg flex items-center justify-center shadow-sm border border-[#C9D3C6] mb-4 sm:mb-6">
               <HelpCircle className="w-5 h-5 text-[#B23A52]" />
             </div>
             <span className="font-mono-plex text-[9px] font-bold text-[#B23A52] tracking-widest uppercase block mb-2">FIELD 03 / TEMPLATE</span>
-            <h3 className="font-fraunces text-lg font-bold text-[#1E3A34] mb-3">Three formats, one dataset</h3>
+            <h3 className="font-fraunces text-base sm:text-lg font-bold text-[#1E3A34] mb-2 sm:mb-3">Three formats, one dataset</h3>
             <p className="text-xs text-[#5B6B60] leading-relaxed">
               Switch structures with one click without resetting fields. Your resume dataset adjusts to each template dynamically.
             </p>
@@ -766,12 +766,12 @@ const Home = () => {
       </section>
 
       {/* 4. TEMPLATES SECTION */}
-      <section id="templates" className="max-w-[1180px] mx-auto px-6 py-20 lg:py-28 space-y-12">
+      <section id="templates" className="max-w-[1180px] mx-auto px-4 sm:px-6 py-12 sm:py-20 lg:py-28 space-y-8 sm:space-y-12">
         <div className="space-y-3 text-center max-w-xl mx-auto">
           <span className="font-mono-plex text-[10px] font-bold text-[#D9A441] uppercase tracking-widest block">
             FIELD 02 / SHAPE
           </span>
-          <h2 className="font-fraunces text-3xl sm:text-4xl font-extrabold text-[#1E3A34]">
+          <h2 className="font-fraunces text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1E3A34]">
             Pick a shape for the story.
           </h2>
           <p className="text-[#3E5750] text-sm leading-relaxed">
@@ -779,12 +779,12 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 sm:gap-5">
           <div>
             <div className="font-mono-plex text-[10px] uppercase tracking-[0.24em] text-[#5B6B60] font-bold">
               Recent collection
             </div>
-            <p className="text-xs text-[#5B6B60] mt-2 max-w-md leading-relaxed">
+            <p className="text-xs text-[#5B6B60] mt-2 max-w-md leading-relaxed hidden sm:block">
               Browse seven polished resume directions. The carousel keeps the same Papertrail fonts, colors, and editorial style while showing more designs than the old three-card row.
             </p>
           </div>
@@ -793,7 +793,7 @@ const Home = () => {
               type="button"
               onClick={() => setTemplateIndex((current) => Math.max(0, current - 1))}
               disabled={!canMoveBackward}
-              className="w-11 h-11 rounded-full border border-[#C9D3C6] bg-[#FBFAF5] flex items-center justify-center text-[#1E3A34] disabled:opacity-35 disabled:cursor-not-allowed hover:bg-[#E4EAE0] transition-colors"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C9D3C6] bg-[#FBFAF5] flex items-center justify-center text-[#1E3A34] disabled:opacity-35 disabled:cursor-not-allowed hover:bg-[#E4EAE0] transition-colors"
               aria-label="Previous designs"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -802,7 +802,7 @@ const Home = () => {
               type="button"
               onClick={() => setTemplateIndex((current) => Math.min(maxTemplateIndex, current + 1))}
               disabled={!canMoveForward}
-              className="w-11 h-11 rounded-full border border-[#C9D3C6] bg-[#FBFAF5] flex items-center justify-center text-[#1E3A34] disabled:opacity-35 disabled:cursor-not-allowed hover:bg-[#E4EAE0] transition-colors"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C9D3C6] bg-[#FBFAF5] flex items-center justify-center text-[#1E3A34] disabled:opacity-35 disabled:cursor-not-allowed hover:bg-[#E4EAE0] transition-colors"
               aria-label="Next designs"
             >
               <ChevronRight className="w-5 h-5" />
@@ -810,7 +810,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="overflow-hidden -mx-3">
+        <div className="overflow-hidden -mx-2 sm:-mx-3">
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${templateIndex * (100 / visibleTemplates)}%)` }}
@@ -818,17 +818,17 @@ const Home = () => {
             {templateDesigns.map((design) => (
               <div
                 key={design.id}
-                className="shrink-0 px-3"
+                className="shrink-0 px-2 sm:px-3"
                 style={{ flexBasis: `${100 / visibleTemplates}%` }}
               >
-                <div className="bg-[#FBFAF5] border border-[#C9D3C6] rounded-[1.75rem] p-5 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 group cursor-pointer h-full">
+                <div className="bg-[#FBFAF5] border border-[#C9D3C6] rounded-2xl sm:rounded-[1.75rem] p-4 sm:p-5 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 group cursor-pointer h-full">
                   <ResumeMiniPreview design={design} />
-                  <div className="flex justify-between items-start gap-3 mt-5">
+                  <div className="flex justify-between items-start gap-3 mt-4 sm:mt-5">
                     <div>
-                      <div className="font-fraunces text-lg font-bold text-[#1E3A34] group-hover:text-[#B23A52] transition-colors">
+                      <div className="font-fraunces text-base sm:text-lg font-bold text-[#1E3A34] group-hover:text-[#B23A52] transition-colors">
                         {design.name}
                       </div>
-                      <div className="font-mono-plex text-[10px] uppercase tracking-[0.2em] text-[#5B6B60] mt-1 font-bold">
+                      <div className="font-mono-plex text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#5B6B60] mt-1 font-bold">
                         {design.label}
                       </div>
                     </div>
@@ -840,13 +840,13 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-2 pt-1">
+        <div className="flex justify-center gap-1.5 sm:gap-2 pt-1">
           {Array.from({ length: maxTemplateIndex + 1 }).map((_, index) => (
             <button
               key={index}
               type="button"
               onClick={() => setTemplateIndex(index)}
-              className={`h-2.5 rounded-full transition-all ${index === templateIndex ? "w-8 bg-[#B23A52]" : "w-2.5 bg-[#C9D3C6]"}`}
+              className={`h-2 sm:h-2.5 rounded-full transition-all ${index === templateIndex ? "w-6 sm:w-8 bg-[#B23A52]" : "w-2 sm:w-2.5 bg-[#C9D3C6]"}`}
               aria-label={`Go to template group ${index + 1}`}
             />
           ))}
@@ -854,18 +854,18 @@ const Home = () => {
       </section>
 
       {/* 5. ATS COMPATIBILITY SECTION (Dark contrast forest green panel) */}
-      <section id="ats-check" className="max-w-[1180px] mx-auto px-6 py-12">
+      <section id="ats-check" className="max-w-[1180px] mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div 
           ref={gaugeSectionRef}
-          className="bg-[#1E3A34] text-[#FBFAF5] rounded-3xl p-8 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+          className="bg-[#1E3A34] text-[#FBFAF5] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
         >
           {/* Left info column */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             <span className="font-mono-plex text-[10px] font-bold text-[#F1D9A5] uppercase tracking-widest block">
               ATS AUDIT SPECIFICATION
             </span>
             
-            <h2 className="font-fraunces text-3xl sm:text-4xl font-extrabold text-[#FBFAF5] leading-tight max-w-lg">
+            <h2 className="font-fraunces text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FBFAF5] leading-tight max-w-lg">
               Checklisted for applicant scanners.
             </h2>
             
@@ -874,44 +874,44 @@ const Home = () => {
             </p>
 
             {/* Grid Checklists */}
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold font-mono-plex tracking-wide text-[#EFF3EC] pt-4">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs font-semibold font-mono-plex tracking-wide text-[#EFF3EC] pt-2 sm:pt-4">
               <li className="flex items-center space-x-3">
-                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
+                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
                 <span>Standard headers</span>
               </li>
               <li className="flex items-center space-x-3">
-                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
+                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
                 <span>Machine dates</span>
               </li>
               <li className="flex items-center space-x-3">
-                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
+                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
                 <span>No breaking grids</span>
               </li>
               <li className="flex items-center space-x-3">
-                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
+                <span className="w-5 h-5 bg-[#D9A441] text-[#1E3A34] rounded-full flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 stroke-[3]" /></span>
                 <span>Keywords density</span>
               </li>
             </ul>
           </div>
 
           {/* Right SVG circular gauge column */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-4 py-6">
-            <div className="relative w-36 h-36 flex items-center justify-center bg-[#2C5F5B]/30 rounded-full border border-[#2C5F5B]/50">
+          <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-4 py-4 sm:py-6">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center bg-[#2C5F5B]/30 rounded-full border border-[#2C5F5B]/50">
               
               {/* Circular Gauge Ring SVG */}
-              <svg className="w-32 h-32 transform -rotate-90">
+              <svg className="w-24 h-24 sm:w-32 sm:h-32 transform -rotate-90">
                 <circle
-                  cx="64"
-                  cy="64"
-                  r="50"
+                  cx="50%"
+                  cy="50%"
+                  r="40%"
                   className="stroke-[#2C5F5B]"
                   strokeWidth="8"
                   fill="transparent"
                 />
                 <circle
-                  cx="64"
-                  cy="64"
-                  r="50"
+                  cx="50%"
+                  cy="50%"
+                  r="40%"
                   className="stroke-[#D9A441] transition-all duration-[1400ms] ease-out"
                   strokeWidth="8"
                   fill="transparent"
@@ -921,12 +921,12 @@ const Home = () => {
               </svg>
 
               <div className="absolute flex flex-col items-center justify-center text-center">
-                <span className="font-fraunces text-3xl font-extrabold text-[#FBFAF5] leading-none">92%</span>
-                <span className="font-mono-plex text-[7px] text-[#C9D3C6] uppercase tracking-widest font-bold mt-1.5">Compliance</span>
+                <span className="font-fraunces text-2xl sm:text-3xl font-extrabold text-[#FBFAF5] leading-none">92%</span>
+                <span className="font-mono-plex text-[6px] sm:text-[7px] text-[#C9D3C6] uppercase tracking-widest font-bold mt-1 sm:mt-1.5">Compliance</span>
               </div>
             </div>
             
-            <span className="font-mono-plex text-[9px] font-bold text-[#F1D9A5] uppercase tracking-widest">
+            <span className="font-mono-plex text-[8px] sm:text-[9px] font-bold text-[#F1D9A5] uppercase tracking-widest text-center">
               Standard ATS compatibility score
             </span>
           </div>
@@ -935,13 +935,13 @@ const Home = () => {
       </section>
 
       {/* 6. CTA PANEL */}
-      <section id="how-it-works" className="max-w-[1180px] mx-auto px-6 py-20">
-        <div className="bg-gradient-to-r from-[#B23A52] to-[#8C2C40] text-[#FBFAF5] rounded-3xl p-8 lg:p-16 text-center space-y-6 relative overflow-hidden shadow-lg border border-[#8C2C40]/35">
+      <section id="how-it-works" className="max-w-[1180px] mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="bg-gradient-to-r from-[#B23A52] to-[#8C2C40] text-[#FBFAF5] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-16 text-center space-y-4 sm:space-y-6 relative overflow-hidden shadow-lg border border-[#8C2C40]/35">
           
           {/* Dashed circle decoration background */}
-          <div className="absolute -top-10 -right-10 w-48 h-48 border-2 border-dashed border-[#FBFAF5]/10 rounded-full pointer-events-none" />
+          <div className="absolute -top-10 -right-10 w-32 sm:w-48 h-32 sm:h-48 border-2 border-dashed border-[#FBFAF5]/10 rounded-full pointer-events-none" />
 
-          <h2 className="font-fraunces text-3xl sm:text-5xl font-extrabold text-[#FBFAF5] max-w-2xl mx-auto leading-tight relative z-10">
+          <h2 className="font-fraunces text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#FBFAF5] max-w-2xl mx-auto leading-tight relative z-10">
             Ready to put it on paper?
           </h2>
           
@@ -949,8 +949,8 @@ const Home = () => {
             Join thousands of professional developers and business specialists compiling pristine CV databases today.
           </p>
 
-          <div className="pt-4 relative z-10">
-            <Link to="/login" className="btn-gold font-mono-plex text-xs uppercase tracking-wider px-10 py-4 rounded-xl font-bold inline-flex items-center space-x-2">
+          <div className="pt-2 sm:pt-4 relative z-10">
+            <Link to="/login" className="btn-gold font-mono-plex text-xs uppercase tracking-wider px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl font-bold inline-flex items-center space-x-2">
               <span>Create my layout</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -1030,11 +1030,11 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto px-6 py-20 animate-fade-in">
-      <div className="bg-[#FBFAF5] p-8 rounded-3xl border border-[#C9D3C6] shadow-sm">
+    <div className="max-w-md mx-auto px-4 sm:px-6 py-12 sm:py-20 animate-fade-in">
+      <div className="bg-[#FBFAF5] p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-[#C9D3C6] shadow-sm">
 
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6 sm:mb-8 flex flex-col items-center">
           <BrandMark />
           <h2 className="font-fraunces text-2xl font-bold text-[#1E3A34] mt-4">
             {mode === "signin" ? "Welcome back" : "Create your account"}

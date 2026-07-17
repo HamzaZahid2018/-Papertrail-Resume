@@ -2,7 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
+from app.core.database import engine, Base
 from app.api.v1.router import api_router
+
+# Import all models so Base.metadata knows about them
+import app.models  # noqa: F401
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -13,6 +17,10 @@ app = FastAPI(
 
 # Register custom global exception formatters
 register_exception_handlers(app)
+
+# Auto-create tables for SQLite (dev convenience)
+if settings.DATABASE_URL.startswith("sqlite"):
+    Base.metadata.create_all(bind=engine)
 
 # Set up CORS middleware
 if settings.BACKEND_CORS_ORIGINS:

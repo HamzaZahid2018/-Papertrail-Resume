@@ -35,10 +35,11 @@ def get_current_user(
         
     try:
         user_uuid = uuid.UUID(token_data.sub)
+        user_id_str = str(user_uuid)
     except ValueError:
         raise AuthException(message="Could not validate credentials: sub format invalid.")
 
-    user = auth_service.get_user_by_id(db, user_id=user_uuid)
+    user = auth_service.get_user_by_id(db, user_id=user_id_str)
     if not user.is_active:
         raise AuthException(message="User account is inactive.")
     return user

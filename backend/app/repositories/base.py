@@ -16,7 +16,7 @@ class BaseRepository(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     def get(self, db: Session, id: Any) -> Optional[ModelType]:
         """Fetch a single record by its primary key ID."""
-        return db.query(self.model).filter(self.model.id == id).first()
+        return db.query(self.model).filter(self.model.id == str(id)).first()
 
     def get_multi(
         self, db: Session, *, skip: int = 0, limit: int = 100
@@ -58,7 +58,7 @@ class BaseRepository(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     def remove(self, db: Session, *, id: Any) -> Optional[ModelType]:
         """Remove a record by its primary key ID."""
-        obj = db.query(self.model).get(id)
+        obj = db.query(self.model).filter(self.model.id == str(id)).first()
         if obj:
             db.delete(obj)
             db.commit()
