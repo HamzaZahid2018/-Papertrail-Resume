@@ -1,5 +1,4 @@
 # Papertrail Resume
-
 Papertrail Resume is a full-stack resume builder that helps users create, save, and download polished CVs through a guided multi-step experience.
 
 ## Features
