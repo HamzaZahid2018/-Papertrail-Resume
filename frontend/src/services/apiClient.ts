@@ -1,6 +1,24 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1";
+/**
+ * Returns the base API URL based on environment.
+ * - In Production (Vercel deployment): Uses VITE_API_URL if set, or defaults to relative '/api/v1'.
+ *   This ensures requests stay on the same domain and leverage vercel.json rewrites.
+ *   NEVER falls back to localhost in production.
+ * - In Local Development: Uses VITE_API_URL if set, or defaults to 'http://localhost:8000/api/v1'.
+ */
+export const getApiBaseUrl = (): string => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && envUrl.trim() !== "") {
+    return envUrl;
+  }
+  if (import.meta.env.PROD) {
+    return "/api/v1";
+  }
+  return "http://localhost:8000/api/v1";
+};
+
+export const API_URL = getApiBaseUrl();
 
 export const apiClient = axios.create({
   baseURL: API_URL,

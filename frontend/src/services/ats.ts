@@ -1,3 +1,5 @@
+import { getApiBaseUrl } from "./apiClient.ts";
+
 export interface AtsCheckResponse {
   score: number;
   matched_keywords: string[];
@@ -15,7 +17,7 @@ export const checkAts = async (
   formData.append("resume_file", resumeFile);
   formData.append("job_description", jobDescription);
 
-  const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1";
+  const baseUrl = getApiBaseUrl();
   const url = baseUrl.endsWith("/api/v1") ? `${baseUrl}/ats/ats-check` : `${baseUrl}/api/v1/ats/ats-check`;
 
   const finalToken = token || localStorage.getItem("access_token") || "";

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { UploadCloud, CheckCircle2, AlertTriangle, FileText, Loader2, Sparkles, AlertCircle, TrendingUp, ChevronRight, RotateCw } from "lucide-react";
 import { DashboardLayout } from "../components/DashboardLayout";
-import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
 import { checkAts, AtsCheckResponse } from "../services/ats";
 
