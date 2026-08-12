@@ -10,6 +10,7 @@ from app.core.database import engine, Base
 # Import all models so SQLAlchemy knows about them
 from app.models.user import User
 from app.models.resume import Resume
+from app.models.ats import AtsReport
 
 print("Creating all tables...")
 try:

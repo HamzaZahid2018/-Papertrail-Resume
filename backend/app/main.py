@@ -23,14 +23,14 @@ if settings.DATABASE_URL.startswith("sqlite"):
     Base.metadata.create_all(bind=engine)
 
 # Set up CORS middleware
-if settings.BACKEND_CORS_ORIGINS:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=[str(origin).rstrip("/") for origin in settings.BACKEND_CORS_ORIGINS],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[str(origin).rstrip("/") for origin in settings.BACKEND_CORS_ORIGINS] if settings.BACKEND_CORS_ORIGINS else [],
+    allow_origin_regex=r"https://.*|http://localhost:.*|http://127\.0\.0\.1:.*|http://192\.168\..*",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Include API endpoints under V1 namespace prefix
 app.include_router(api_router, prefix=settings.API_V1_STR)

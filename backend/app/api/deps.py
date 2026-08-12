@@ -2,7 +2,7 @@ import uuid
 from typing import Generator
 from fastapi import Depends, status
 from fastapi.security import OAuth2PasswordBearer
-from jose import jwt, JWTError
+from jose import jwt, JWTError, ExpiredSignatureError
 from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.core.database import get_db
@@ -21,6 +21,7 @@ def get_current_user(
     token: str = Depends(oauth2_scheme)
 ) -> User:
     """Validate bearer token and retrieve active user context."""
+    print(f"DEBUG token received in backend: {token!r}")
     try:
         payload = jwt.decode(
             token, 
@@ -30,6 +31,8 @@ def get_current_user(
         token_data = TokenPayload(**payload)
         if token_data.sub is None:
             raise AuthException(message="Could not validate credentials: sub claim missing.")
+    except ExpiredSignatureError:
+        raise AuthException(message="Could not validate credentials: token has expired.")
     except JWTError:
         raise AuthException(message="Could not validate credentials: token format invalid.")
         
