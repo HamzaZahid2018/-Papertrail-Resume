@@ -18,9 +18,14 @@ app = FastAPI(
 # Register custom global exception formatters
 register_exception_handlers(app)
 
-# Auto-create tables for SQLite (dev convenience)
-if settings.DATABASE_URL.startswith("sqlite"):
+# Auto-create tables for all configured databases (SQLite locally & PostgreSQL/Supabase in production)
+try:
     Base.metadata.create_all(bind=engine)
+except Exception as e:
+    import logging
+    import re
+    clean_err = re.sub(r'://[^:@]+:[^@]+@', '://***:***@', str(e))
+    logging.error(f"Error initializing database tables on startup: {clean_err}")
 
 # Set up CORS middleware
 app.add_middleware(

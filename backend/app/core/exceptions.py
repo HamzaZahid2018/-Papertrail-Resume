@@ -124,7 +124,17 @@ def register_exception_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(Exception)
     async def general_exception_handler(request: Request, exc: Exception):
-        # Catch-all fallback for unhandled standard runtime errors
+        # Catch-all fallback for unhandled standard runtime errors with sanitized logging
+        import logging
+        import re
+
+        raw_err = str(exc)
+        # Strip database credentials, passwords, and sensitive params
+        sanitized_err = re.sub(r'://[^:@]+:[^@]+@', '://***:***@', raw_err)
+        sanitized_err = re.sub(r'password=[\w!@#$%^&*()]+', 'password=***', sanitized_err, flags=re.IGNORECASE)
+
+        logging.error(f"[SERVER/DATABASE ERROR] Path: {request.url.path} | Error: {sanitized_err}")
+
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={
@@ -132,7 +142,7 @@ def register_exception_handlers(app: FastAPI) -> None:
                 "error": {
                     "code": "INTERNAL_SERVER_ERROR",
                     "message": "An unexpected error occurred on the server.",
-                    "details": str(exc) if app.debug else None
+                    "details": None
                 }
             }
         )
