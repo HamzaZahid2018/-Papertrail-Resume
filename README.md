@@ -1,6 +1,5 @@
 # Papertrail Resume
 Papertrail Resume is a full-stack resume builder that helps users create, save, and download polished CVs through a guided multi-step experience.
-
 ## Features
 - Guided 7-step resume builder
 - Live preview while editing
@@ -8,7 +7,6 @@ Papertrail Resume is a full-stack resume builder that helps users create, save, 
 - Download resume output
 - Modern dashboard for managing resumes
 - Authentication-ready API structure
-
 ## Tech Stack
 
 ### Frontend
