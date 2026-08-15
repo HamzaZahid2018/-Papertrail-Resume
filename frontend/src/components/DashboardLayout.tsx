@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Home, FileText, LogOut, Menu, X, ChevronRight, User } from "lucide-react";
+import { Home, FileText, LogOut, Menu, X, ChevronRight, User, Zap } from "lucide-react";
 import { useAuth } from "../context/AuthContext.tsx";
 
 interface DashboardLayoutProps {
@@ -24,6 +24,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const navigationItems = [
     { name: "Overview", path: "/dashboard", icon: Home, label: "WORKSPACE" },
     { name: "Resume Builder", path: "/builder", icon: FileText, label: "TOOLS" },
+    { name: "ATS Checker", path: "/ats-check", icon: Zap, label: "TOOLS" },
   ];
 
   const handleLogout = () => {
@@ -148,7 +149,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               <span>Workspace</span>
               <span className="text-[#C9D3C6]">/</span>
               <span className="text-[#1E3A34]">
-                {location.pathname === "/dashboard" ? "Overview" : "Resume Builder"}
+                {location.pathname === "/dashboard" ? "Overview" : location.pathname === "/builder" ? "Resume Builder" : "ATS Checker"}
               </span>
             </div>
             <div className="flex items-center space-x-3">

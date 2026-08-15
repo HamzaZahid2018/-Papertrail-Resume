@@ -34,13 +34,25 @@ async def extract_text_from_file(file: UploadFile) -> str:
                 if page_text:
                     text += page_text + "\n"
         elif filename.lower().endswith('.docx') or file.content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-            result = mammoth.extract_raw_text(io.BytesIO(content))
-            text = result.value
+            # Try extracting text with fallback to HTML conversion
+            try:
+                result = mammoth.extract_raw_text(io.BytesIO(content))
+                text = result.value
+            except Exception as fallback_error:
+                # Fallback: convert to HTML and strip tags
+                print(f"extract_raw_text failed, trying convert_to_html: {fallback_error}")
+                result = mammoth.convert_to_html(io.BytesIO(content))
+                html = result.value
+                # Remove HTML tags
+                text = re.sub(r'<[^>]+>', '', html)
+                # Decode HTML entities
+                text = text.replace('&nbsp;', ' ').replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&')
         else:
             raise HTTPException(status_code=415, detail="Unsupported file format. Please upload PDF or DOCX.")
+    except HTTPException:
+        raise
     except Exception as e:
-        if isinstance(e, HTTPException):
-            raise e
+        print(f"File parsing error: {str(e)}")
         raise HTTPException(status_code=400, detail=f"Failed to parse file: {str(e)}")
         
     if not text.strip():
