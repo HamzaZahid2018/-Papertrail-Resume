@@ -97,3 +97,9 @@ Once the backend is running, open:
 ## Notes
 
 This repository is ready to be pushed to GitHub. If you want, you can also add screenshots under the docs/images folder to make the README visually richer.
+
+---
+
+## 📅 Daily Updates
+
+- 2026-10-07: README refreshed.
