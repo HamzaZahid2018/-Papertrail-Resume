@@ -85,7 +85,6 @@ cd frontend
 npm install
 npm run dev
 ```
-
 Open http://localhost:5173
 
 ## API Docs
@@ -108,3 +107,5 @@ This repository is ready to be pushed to GitHub. If you want, you can also add s
 - 2026-10-13: README refreshed.
 
 - 2026-10-15: README refreshed.
+
+- 2026-10-18: README refreshed.
